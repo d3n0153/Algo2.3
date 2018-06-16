@@ -1,5 +1,9 @@
 
 public class GraphImpl implements Graph{
+	
+	// Konstruktor Graphimpl bekommt ein zweidimensionales Array (Adjazenzmatrix des Graphen)
+	public GraphImpl(int[][] g) {
+	}
 
 	@Override
 	public int size() {

@@ -1,5 +1,9 @@
 
 public class WeightedGraphImpl implements WeightedGraph{
+	
+	public WeightedGraphImpl(int[][] g) {
+		
+	}
 
 	@Override
 	public int size() {
