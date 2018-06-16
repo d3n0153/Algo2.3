@@ -3,7 +3,8 @@ public class WeightedGraphImpl implements WeightedGraph{
 	
 	// Konstruktor bekommt ein 2D Array (Adjazentmatrix des Graphen) und 2D Array der gewichteten Kanten
 	public WeightedGraphImpl(int[][] g, double[][] we) {
-		
+		// Der graph selbst sollte auch als 2DArray angelegt werden? oder impl einer 
+		// neuen Klasse Knoten
 	}
 
 	@Override
