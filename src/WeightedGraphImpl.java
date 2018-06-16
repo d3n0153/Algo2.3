@@ -1,7 +1,8 @@
 
 public class WeightedGraphImpl implements WeightedGraph{
 	
-	public WeightedGraphImpl(int[][] g) {
+	// Konstruktor bekommt ein 2D Array (Adjazentmatrix des Graphen) und 2D Array der gewichteten Kanten
+	public WeightedGraphImpl(int[][] g, double[][] we) {
 		
 	}
 
