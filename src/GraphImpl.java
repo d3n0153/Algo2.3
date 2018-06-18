@@ -1,3 +1,5 @@
+import java.util.*;
+import java.util.List;
 
 public class GraphImpl implements Graph{
 	
@@ -28,9 +30,34 @@ public class GraphImpl implements Graph{
 		return graph[v][i];
 	} // fertig
 
+	// gibt den Graph transponiert zurück
 	public Graph transpose() {
-		// TODO Auto-generated method stub
-		return null;
-	} 
+		
+		// Wird nachher der Graph der returned wird
+		int[][] graphTrans = new int[anzKnoten][anzKnoten];
+		
+		// erstelle ein Array aus Arraylists. Jeder Knoten bekommt eine Liste
+		List<Integer>[] dummy = new ArrayList[anzKnoten];
+		for(int i=0; i < anzKnoten; i++) {
+			dummy[i] = new ArrayList<Integer>();	// Füllen des Arrays mit ArrayListen
+		}
+		
+		// Transponieren, umdrehen aller Pfeile
+		for(int i = 0; i < anzKnoten; i++) {
+			for(int j = 0; j < graph[i].length; j++) {
+				int a = graph[i][j];		// Knoten auf den Knoten i zeigt
+				dummy[a].add(i); 		// Knoten i wird nun in die List von Knoten a geschrieben 			
+			}					
+		}
+		
+		// 2D-Array graphTrans mit den Werten aus Dummy fuellen
+		for(int i = 0; i < anzKnoten; i++) {
+			for(int j = 0; j < graph[i].length; j++) {
+				graphTrans[i][j] = dummy[i].get(j);
+			}
+		}
+		
+		return new GraphImpl(graphTrans);
+	} // fertig
 	
 }
