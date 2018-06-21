@@ -8,11 +8,12 @@ public class BFSImpl implements BFS{
 	// S.133, delta(u, v) = Distanz des kürzesten Weges vom Knoten u zum Knoten v
 	// pi(V) = Vorgänger
 	
+	int[][] tab;
 	
 	public void search(Graph g, int s) {
 		
 		// Tabelle Spalten = anzahl der Knoten; Zeile 0: delta; Zeile 1: pi
-		double[][] tab = new double[g.size()][2];
+		tab = new int[g.size()][2];
 		for (int i = 0; i < tab.length; i++) {
 			tab[i][0] = INF;
 			tab[i][1] = NIL;
@@ -40,14 +41,12 @@ public class BFSImpl implements BFS{
 
 	@Override
 	public int dist(int v) {
-		// TODO Auto-generated method stub
-		return 0;
+		return tab[v][0];
 	}
 
 	@Override
 	public int pred(int v) {
-		// TODO Auto-generated method stub
-		return 0;
+		return tab[v][1];
 	}
 	
 }
