@@ -7,7 +7,7 @@ public class BFSImpl implements BFS{
 	// S.133, delta(u, v) = Distanz des kürzesten Weges vom Knoten u zum Knoten v
 	// pi(V) = Vorgänger
 	
-	Queue<Int> wareschlange = new Queue<Int>();
+    // Queue<Int> wareschlange = new Queue<Int>();
 	// Flore vllt weißt du wie man eine FifoWarteschlange implementiert? 
 	
 	public void search(Graph g, int s) {

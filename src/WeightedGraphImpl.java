@@ -1,40 +1,73 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class WeightedGraphImpl implements WeightedGraph{
 	
+	int anzKnoten;
+	int[][] graph = new int[anzKnoten][anzKnoten];
+	double[][] weights = new double[anzKnoten][anzKnoten];
+	
 	// Konstruktor bekommt ein 2D Array (Adjazentmatrix des Graphen) und 2D Array der gewichteten Kanten
 	public WeightedGraphImpl(int[][] g, double[][] we) {
-		// Der graph selbst sollte auch als 2DArray angelegt werden? oder impl einer 
-		// neuen Klasse Knoten
+		
+		anzKnoten = g.length;
+		graph = g;
+		weights = we;
 	}
 
-	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return anzKnoten;
 	}
 
-	@Override
 	public int deg(int v) {
-		// TODO Auto-generated method stub
-		return 0;
+		return graph[v].length;	
 	}
 
-	@Override
 	public int succ(int v, int i) {
-		// TODO Auto-generated method stub
-		return 0;
+		return graph[v][i];
 	}
 
 	@Override
 	public Graph transpose() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// Wird nachher der Graph der returned wird
+		int[][] graphTrans = new int[anzKnoten][anzKnoten];
+		double[][] weightTrans = new double[anzKnoten][anzKnoten];
+		
+		// erstelle ein Array aus Arraylists. Jeder Knoten bekommt eine Liste
+		List<Integer>[] dummyGraph = new ArrayList[anzKnoten];
+		for(int i=0; i < anzKnoten; i++) {
+			dummyGraph[i] = new ArrayList<Integer>();	// Füllen des Arrays mit ArrayListen
+		}
+		
+		List<Double>[] dummyWeights = new ArrayList[anzKnoten];
+		for(int i=0; i < anzKnoten; i++) {
+			dummyWeights[i] = new ArrayList<Double>();	// Füllen des Arrays mit ArrayListen
+		}
+		
+		// Transponieren, umdrehen aller Pfeile
+		for(int i = 0; i < anzKnoten; i++) {
+			for(int j = 0; j < graph[i].length; j++) {
+				int a = graph[i][j];			// Knoten auf den Knoten i zeigt
+				double b = weights[i][j];	// Gewicht der Kante i nach v
+				dummyGraph[a].add(i); 		// Knoten i wird nun in die List von Knoten a geschrieben
+				dummyWeights[a].add(b);		// man schreibt für den Knoten auf den der Knoten i zeigt, 
+											// das Gewicht in die jeweilige Liste
+			}					
+		}
+		
+		// 2D-Array graphTrans mit den Werten aus Dummy fuellen
+		for(int i = 0; i < anzKnoten; i++) {
+			for(int j = 0; j < graph[i].length; j++) {
+				graphTrans[i][j] = dummyGraph[i].get(j);
+				weightTrans[i][j] = dummyWeights[i].get(j);
+			}
+		}
+		
+		return new WeightedGraphImpl(graphTrans, weightTrans);
 	}
 
-	@Override
 	public double weight(int v, int i) {
-		// TODO Auto-generated method stub
-		return 0;
+		return weights[v][i];
 	}
-	
 }
