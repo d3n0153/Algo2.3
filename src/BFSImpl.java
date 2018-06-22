@@ -48,5 +48,4 @@ public class BFSImpl implements BFS{
 	public int pred(int v) {
 		return tab[v][1];
 	}
-	
 }

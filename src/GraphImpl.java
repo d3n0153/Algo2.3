@@ -5,7 +5,7 @@ public class GraphImpl implements Graph{
 	
 	// Deklaration Variablen einer Objekts
 	int anzKnoten;
-	int[][] graph = new int[anzKnoten][anzKnoten]; // <-- !! evtl crasht es hier an der Stelle !!
+	int[][] graph; // <-- !! evtl crasht es hier an der Stelle !!
 	
 	// Konstruktor Graphimpl bekommt ein zweidimensionales Array (Adjazenzmatrix des Graphen)
 	public GraphImpl(int[][] g) {
@@ -34,7 +34,6 @@ public class GraphImpl implements Graph{
 	public Graph transpose() {
 		
 		// Wird nachher der Graph der returned wird
-		int[][] graphTrans = new int[anzKnoten][anzKnoten];
 		
 		// erstelle ein Array aus Arraylists. Jeder Knoten bekommt eine Liste
 		List<Integer>[] dummy = new ArrayList[anzKnoten];
@@ -50,14 +49,31 @@ public class GraphImpl implements Graph{
 			}					
 		}
 		
-		// 2D-Array graphTrans mit den Werten aus Dummy fuellen
+		int[][] graphTrans = new int[anzKnoten][anzKnoten];
+		// GraphTrans mit -1 füllen
 		for(int i = 0; i < anzKnoten; i++) {
-			for(int j = 0; j < graph[i].length; j++) {
-				graphTrans[i][j] = dummy[i].get(j);
+			for(int j = 0; j < anzKnoten; j++) {
+				graphTrans[i][j] = -1;
+			}
+		}
+		
+		// 2D-Array graphTrans mit den Werten aus Dummy fuellen
+		for(int index = 0; index < anzKnoten; index++) {
+			for(int j = 0; j < dummy[index].size(); j++) {
+				graphTrans[index][j] = dummy[index].get(j);
 			}
 		}
 		
 		return new GraphImpl(graphTrans);
+
 	} // fertig
+	
+	public void print() {
+	    for(int i = 0; i < anzKnoten; i++) {
+	    		for(int j = 0; j < graph[i].length; j++) {
+	    			System.out.println("graph[" + i + "][" + j + "] = " + graph[i][j]);
+	    		}
+	    }
+	}
 	
 }

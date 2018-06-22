@@ -30,9 +30,17 @@ public class WeightedGraphImpl implements WeightedGraph{
 	@Override
 	public Graph transpose() {
 		
-		// Wird nachher der Graph der returned wird
+		// 1. Wird nachher der Graph der returned wird
 		int[][] graphTrans = new int[anzKnoten][anzKnoten];
 		double[][] weightTrans = new double[anzKnoten][anzKnoten];
+		
+		// 2. Fülle die Arrays erst einmal mit -1er
+		for (int i = 0; i < anzKnoten; i++){
+			for (int j = 0; j < anzKnoten; j++){
+				graphTrans[i][j] = -1;
+				weightTrans[i][j] = -1;
+			}
+		}
 		
 		// erstelle ein Array aus Arraylists. Jeder Knoten bekommt eine Liste
 		List<Integer>[] dummyGraph = new ArrayList[anzKnoten];
@@ -63,7 +71,6 @@ public class WeightedGraphImpl implements WeightedGraph{
 				weightTrans[i][j] = dummyWeights[i].get(j);
 			}
 		}
-		
 		return new WeightedGraphImpl(graphTrans, weightTrans);
 	}
 
