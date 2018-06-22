@@ -5,7 +5,7 @@ class EigeneMain {
 
 	public static void main (String [] args) {
 		
-		GraphImpl heilo = new GraphImpl(new int [] [] {
+		Graph heilo = new GraphImpl(new int [] [] {
 		    { 1, 2, 3 },	// Knoten 0 hat als Nachfolger Knoten 1 und 2.
 		    { 0, 3 },	// Knoten 1 hat keine Nachfolger.
 		    { 2, 1 },
@@ -23,13 +23,12 @@ class EigeneMain {
 	    heilo = (GraphImpl) heilo.transpose();
 	    System.out.println("__________________");
 	    heilo.print();
-	 
 	    
-	    int[][] lilo = {{2, 3, 4},{1}};
-	    lilo[0] = 
+	    int[][] graph = {{1, 2},{0, 2},{3},{1, 3}};
+	    double[][] weightsToGraph = {{2, 4}, {-1.5, 7}, {11}, {1, 8}};
 	    
-	    int lk = lilo[1][2];
-	    System.out.println(lk);
+	    Graph wg = new WeightedGraphImpl(graph, weightsToGraph);
+
 	    
 	}
 

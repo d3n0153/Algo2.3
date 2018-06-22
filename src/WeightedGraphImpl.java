@@ -77,4 +77,8 @@ public class WeightedGraphImpl implements WeightedGraph{
 	public double weight(int v, int i) {
 		return weights[v][i];
 	}
+	
+	public void print() {
+		
+	}
 }
