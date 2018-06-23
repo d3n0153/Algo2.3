@@ -31,16 +31,8 @@ public class WeightedGraphImpl implements WeightedGraph{
 	public Graph transpose() {
 		
 		// 1. Wird nachher der Graph der returned wird
-		int[][] graphTrans = new int[anzKnoten][anzKnoten];
-		double[][] weightTrans = new double[anzKnoten][anzKnoten];
-		
-		// 2. Fülle die Arrays erst einmal mit -1er
-		for (int i = 0; i < anzKnoten; i++){
-			for (int j = 0; j < anzKnoten; j++){
-				graphTrans[i][j] = -1;
-				weightTrans[i][j] = -1;
-			}
-		}
+		int[][] graphTrans = new int[anzKnoten][];
+		double[][] weightTrans = new double[anzKnoten][];
 		
 		// erstelle ein Array aus Arraylists. Jeder Knoten bekommt eine Liste
 		List<Integer>[] dummyGraph = new ArrayList[anzKnoten];
@@ -66,7 +58,9 @@ public class WeightedGraphImpl implements WeightedGraph{
 		
 		// 2D-Array graphTrans mit den Werten aus Dummy fuellen
 		for(int i = 0; i < anzKnoten; i++) {
-			for(int j = 0; j < graph[i].length; j++) {
+			graphTrans[i] = new int[dummyGraph[i].size()];
+			weightTrans[i] = new double[dummyWeights[i].size()];
+			for(int j = 0; j < dummyGraph[i].size(); j++) {
 				graphTrans[i][j] = dummyGraph[i].get(j);
 				weightTrans[i][j] = dummyWeights[i].get(j);
 			}
@@ -79,6 +73,11 @@ public class WeightedGraphImpl implements WeightedGraph{
 	}
 	
 	public void print() {
-		
+		 for(int i = 0; i < anzKnoten; i++) {
+	    		for(int j = 0; j < graph[i].length; j++) {
+	    			System.out.println("graph[" + i + "][" + j + "] = " + graph[i][j]);
+	    			System.out.println("weights[" + i + "][" + j + "] = " + weights[i][j]);
+	    		}
+	    }
 	}
 }

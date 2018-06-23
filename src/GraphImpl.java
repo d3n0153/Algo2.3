@@ -49,16 +49,10 @@ public class GraphImpl implements Graph{
 			}					
 		}
 		
-		int[][] graphTrans = new int[anzKnoten][anzKnoten];
-		// GraphTrans mit -1 füllen
-		for(int i = 0; i < anzKnoten; i++) {
-			for(int j = 0; j < anzKnoten; j++) {
-				graphTrans[i][j] = -1;
-			}
-		}
-		
+		int[][] graphTrans = new int[anzKnoten][];
 		// 2D-Array graphTrans mit den Werten aus Dummy fuellen
 		for(int index = 0; index < anzKnoten; index++) {
+			graphTrans[index] = new int[dummy[index].size()];
 			for(int j = 0; j < dummy[index].size(); j++) {
 				graphTrans[index][j] = dummy[index].get(j);
 			}
