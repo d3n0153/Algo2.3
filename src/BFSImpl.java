@@ -13,10 +13,12 @@ public class BFSImpl implements BFS{
 	public void search(Graph g, int s) {
 		
 		// Tabelle Spalten = anzahl der Knoten; Zeile 0: delta; Zeile 1: pi
+		// tab[x][0] = Distanz zum Startknoten
+		// tab[x][1] = VorgängerKnoten
 		tab = new int[g.size()][2];
 		for (int i = 0; i < tab.length; i++) {
-			tab[i][0] = INF;
-			tab[i][1] = NIL;
+				tab[i][0] = INF;
+				tab[i][1] = NIL;				
 		}
 		tab[s][0] = 0;
 		
@@ -27,7 +29,9 @@ public class BFSImpl implements BFS{
 			
 			int u = (fifo.removeFirst().intValue());
 			
-			for(int v = 0; v < g.deg(u); v++) {
+			for(int i = 0; i < g.deg(u); i++) {
+				
+				int v = g.succ(u, i);
 				
 				if(tab[v][0] == INF) {
 					tab[v][0] = tab[u][0] + 1;

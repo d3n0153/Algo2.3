@@ -11,6 +11,13 @@ class EigeneMain {
 		    {2}, // Knoten 2 hat als Nachfolger sich selbst.
 		});
 		
+		Graph test = new GraphImpl(new int[][] {
+			{1, 2},
+			{2},
+			{3},
+			{}
+		});
+		
 	    BFS bfs = new BFSImpl();
 	    bfs.search(heilo, 0);
 	    for (int v = 0; v < 3; v++) {
@@ -38,6 +45,14 @@ class EigeneMain {
 	    wg = wg.transpose();
 	    wg.print();
 	    
+	    System.out.println("________BFS_TEST__________");
+	    
+	    BFS bubbie = new BFSImpl();
+	    bubbie.search(test, 0);
+	    int a0 = bubbie.dist(3);
+	    int a1 = bubbie.pred(3);
+	    System.out.println("dist: " + a0);
+	    System.out.println("pred: " + a1);
 	}
 
 }
