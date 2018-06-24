@@ -113,7 +113,8 @@ class EigeneMain {
 	     
 	     System.out.println("________DFS_TEST__________");	
 	     DFS dede = new DFSImpl();
-	     dede.sort(heiloAzykl);
+	     dede.sort(dfsTest);
+	     System.out.println("________DFS_TEST_ENDE_____");
 	}
 
 }
