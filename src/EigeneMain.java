@@ -3,6 +3,15 @@ class EigeneMain {
 	// Testgraphen.
 
 
+	public static void add(int i) {
+		i = i + 1;
+	}
+	
+	public static int addInt(int i) {
+		i = i + 1;
+		return i;
+	}
+	
 	public static void main (String [] args) {
 		
 		Graph heilo = new GraphImpl(new int [] [] {
@@ -11,10 +20,30 @@ class EigeneMain {
 		    {2}, // Knoten 2 hat als Nachfolger sich selbst.
 		});
 		
+		Graph heiloAzykl = new GraphImpl(new int [] [] {
+		    { 1, 2},	// Knoten 0 hat als Nachfolger Knoten 1 und 2.
+		    {},	// Knoten 1 hat keine Nachfolger.
+		    {}, // Knoten 2 hat als Nachfolger sich selbst.
+		});
+		
 		Graph test = new GraphImpl(new int[][] {
 			{1, 2},
 			{2},
 			{3},
+			{}
+		});
+		
+		Graph dfsTest = new GraphImpl(new int[][] {
+			{1},
+			{},
+			{0, 3},
+			{}
+		});
+		
+		Graph dfsTest2 = new GraphImpl(new int[][] {
+			{1},
+			{2},
+			{0, 3},
 			{}
 		});
 		
@@ -45,14 +74,46 @@ class EigeneMain {
 	    wg = wg.transpose();
 	    wg.print();
 	    
-	    System.out.println("________BFS_TEST__________");
-	    
+	    // BFS TEST
+	    System.out.println("________BFS_TEST__________");	    
 	    BFS bubbie = new BFSImpl();
 	    bubbie.search(test, 0);
 	    int a0 = bubbie.dist(3);
 	    int a1 = bubbie.pred(3);
 	    System.out.println("dist: " + a0);
 	    System.out.println("pred: " + a1);
+	    System.out.println("________BFS_TEST_ENDE_____");	 
+	    
+	    int zahl = 5;
+	    add(zahl);
+	    System.out.println(zahl);
+	    zahl = addInt(zahl);
+	    System.out.println(zahl);
+	    
+	    int [] hadde = null;
+	    if (hadde == null) {
+	    		System.out.println("hadde war null");
+	    }
+	    hadde = new int[3];
+	    hadde[0] = 1;
+	    hadde[1] = 2;
+	    hadde[2] = 3;
+	    if (hadde != null) {
+	    		System.out.println("hadde wurde beschrieben");
+	    }
+	    hadde = null;
+	    if (hadde == null) {
+	    		System.out.println("hadde war null");
+	    }
+	    hadde = new int[7];
+	    for(int i = 0; i < 7; i++) {
+	    		hadde[i] = i;
+	    		System.out.println(hadde[i]);
+	    }
+	     
+	     System.out.println("________DFS_TEST__________");	
+	     DFS dede = new DFSImpl();
+	     dede.sort(heiloAzykl);
 	}
 
 }
