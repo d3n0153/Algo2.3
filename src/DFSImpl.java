@@ -6,25 +6,39 @@ public class DFSImpl implements DFS{
 
 	int[] topoSort;
 	int[][] dfs; 
-	int timestamp = 1;
+	int timestamp = 0;
 	Stack graueKn = new Stack();
+	Graph graph;
 	
-	@Override
+	
+	private void nachfolgerDurchsuchen(int i) {
+		dfs[i][2] = timestamp++;
+		for(int j = 0; j < graph.deg(i); j++) {
+			if(dfs[j][0] == 0) {
+				dfs[j][1] = i;
+				nachfolgerDurchsuchen(j);	// Rekursiver Aufruf
+			}
+		}
+		dfs[i][3] = timestamp++;
+	}
+	
+	
 	public void search(Graph g) {
+		graph = g;
 		dfs = new int[g.size()][4];
 		// [][0] = farbe		(0 = weiß; 	1 = grau; 	2 = schwarz)
 		// [][1] = Vorgaenger
 		// [][2] = Entdeckungszeit
 		// [][3] = Abschlusszeit
 		
-		
-		dfs[0][0] = 1;
-		dfs[0][2] = timestamp;
-		graueKn.add(0);
-		if (g.deg(0) == 0) {
-			timestamp++;
+		for(int i = 0; i < g.size(); i++) {
+			if (dfs[i][0] == 0) {
+				dfs[i][1] = -1;
+			}
+			nachfolgerDurchsuchen(i);
 		}
 	}
+	
 
 	@Override
 	public void search(Graph g, DFS d) {

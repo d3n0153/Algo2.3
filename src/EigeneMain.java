@@ -115,6 +115,10 @@ class EigeneMain {
 	     DFS dede = new DFSImpl();
 	     dede.sort(dfsTest);
 	     System.out.println("________DFS_TEST_ENDE_____");
+	     
+	     int al = 1;
+	     int bel = al++;
+	     System.out.println(bel);
 	}
 
 }
