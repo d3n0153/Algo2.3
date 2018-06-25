@@ -59,7 +59,7 @@ class EigeneMain {
 			{}
 		});
 		
-		Graph dfsTest4 = new GraphImpl(new int[][] { // zyklisch
+		Graph dfsTest4 = new GraphImpl(new int[][] { // azyklisch
 			{1, 3, 4},
 			{5},
 			{},
@@ -139,15 +139,22 @@ class EigeneMain {
 	     
 	     DFS dede = new DFSImpl();
 	     
-	     dede.sort(dfsTest3);
-	     dede.search(dfsTest3);
+	     dede.search(heiloAzykl);
+	     dede.sort(heiloAzykl);
 	     
-	     int dt2 = dede.det(8);
+	     int dt2 = dede.det(0);
 	     System.out.println(dt2);
 	     
-	     int ft2 = dede.fin(8);
+	     int ft2 = dede.fin(0);
 	     System.out.println(ft2);
 	     
+	     dede.search(heiloAzykl, dede);
+	     
+	     int dt3 = dede.det(0);
+	     System.out.println(dt3);
+	     
+	     int ft3 = dede.fin(0);
+	     System.out.println(ft3);
 	     System.out.println("________DFS_TEST_ENDE_____");
 	     
 
