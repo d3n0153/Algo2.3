@@ -6,20 +6,31 @@ public class DFSImpl implements DFS{
 
 	int[] topoSort;
 	int[][] dfs; 
-	int timestamp = 0;
+	int timestamp = 1;
 	Stack graueKn = new Stack();
 	Graph graph;
 	
 	
 	private void nachfolgerDurchsuchen(int i) {
-		dfs[i][2] = timestamp++;
+		
+		// Falls noch nicht entdeckt, färbe grau und stempel detectionTime
+		if(dfs[i][0] == 0) { 
+			dfs[i][2] = timestamp++;
+			dfs[i][0] = 1;
+		}
+		
 		for(int j = 0; j < graph.deg(i); j++) {
-			if(dfs[j][0] == 0) {
-				dfs[j][1] = i;
-				nachfolgerDurchsuchen(j);	// Rekursiver Aufruf
+			int v = graph.succ(i, j);
+			if(dfs[v][0] == 0) {
+				dfs[v][1] = i;
+				nachfolgerDurchsuchen(v);	// Rekursiver Aufruf
 			}
 		}
-		dfs[i][3] = timestamp++;
+		
+		if(dfs[i][0] != 2) {
+			dfs[i][3] = timestamp++;
+			dfs[i][0] = 2;
+		}
 	}
 	
 	
@@ -113,14 +124,12 @@ public class DFSImpl implements DFS{
 
 	@Override
 	public int det(int v) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dfs[v][2];
 	}
 
 	@Override
 	public int fin(int v) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dfs[v][3];
 	}
 
 	@Override

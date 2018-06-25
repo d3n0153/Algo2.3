@@ -14,13 +14,13 @@ class EigeneMain {
 	
 	public static void main (String [] args) {
 		
-		Graph heilo = new GraphImpl(new int [] [] {
+		Graph heilo = new GraphImpl(new int [] [] { // zyklisch
 		    { 1, 2},	// Knoten 0 hat als Nachfolger Knoten 1 und 2.
 		    {},	// Knoten 1 hat keine Nachfolger.
 		    {2}, // Knoten 2 hat als Nachfolger sich selbst.
 		});
 		
-		Graph heiloAzykl = new GraphImpl(new int [] [] {
+		Graph heiloAzykl = new GraphImpl(new int [] [] { // azyklisch
 		    { 1, 2},	// Knoten 0 hat als Nachfolger Knoten 1 und 2.
 		    {},	// Knoten 1 hat keine Nachfolger.
 		    {}, // Knoten 2 hat als Nachfolger sich selbst.
@@ -33,7 +33,7 @@ class EigeneMain {
 			{}
 		});
 		
-		Graph dfsTest = new GraphImpl(new int[][] {
+		Graph dfsTest = new GraphImpl(new int[][] { 
 			{1},
 			{},
 			{0, 3},
@@ -44,6 +44,30 @@ class EigeneMain {
 			{1},
 			{2},
 			{0, 3},
+			{}
+		});
+		
+		Graph dfsTest3 = new GraphImpl(new int[][] { // zyklisch
+			{1, 3, 4},
+			{5},
+			{},
+			{4},
+			{5, 6, 7},
+			{2, 8},
+			{3},
+			{6},
+			{}
+		});
+		
+		Graph dfsTest4 = new GraphImpl(new int[][] { // zyklisch
+			{1, 3, 4},
+			{5},
+			{},
+			{4},
+			{5},
+			{2, 8},
+			{3},
+			{6},
 			{}
 		});
 		
@@ -112,13 +136,21 @@ class EigeneMain {
 	    }
 	     
 	     System.out.println("________DFS_TEST__________");	
+	     
 	     DFS dede = new DFSImpl();
-	     dede.sort(dfsTest);
+	     
+	     dede.sort(dfsTest3);
+	     dede.search(dfsTest3);
+	     
+	     int dt2 = dede.det(8);
+	     System.out.println(dt2);
+	     
+	     int ft2 = dede.fin(8);
+	     System.out.println(ft2);
+	     
 	     System.out.println("________DFS_TEST_ENDE_____");
 	     
-	     int al = 1;
-	     int bel = al++;
-	     System.out.println(bel);
+
 	}
 
 }
