@@ -80,6 +80,9 @@ public class DFSImpl implements DFS{
 
 	// sortiert die Knoten topologisch 
 	public boolean sort(Graph g) {
+		
+		search(g);
+		
 		if(ruekwaertskanteGefunden) {
 //			System.out.println("false");
 			return false;
