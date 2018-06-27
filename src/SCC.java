@@ -6,9 +6,9 @@ interface SCC {
     // Vom Algorithmus ermittelte Information:
 
     // Eindeutige Nummer der Zusammenhangskomponente,
-    // zu der der Knoten v gehÃ¶rt.
-    // Das heiÃŸt: component(u) muss genau dann gleich component(v) sein,
-    // wenn u und v zur gleichen Zusammenhangskomponente gehÃ¶ren.
-    // Abgesehen davon, kÃ¶nnen die Nummern beliebig sein.
+    // zu der der Knoten v gehoert.
+    // Das heisst: component(u) muss genau dann gleich component(v) sein,
+    // wenn u und v zur gleichen Zusammenhangskomponente gehoeren.
+    // Abgesehen davon, koennen die Nummern beliebig sein.
     int component (int v);
 }

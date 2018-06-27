@@ -3,8 +3,10 @@ public class SCCImpl implements SCC{
 
 	@Override
 	public void compute(Graph g) {
-		// TODO Auto-generated method stub
-		
+		DFSImpl dfs = new DFSImpl();
+		dfs.search(g);
+		g = g.transpose();
+		dfs.search(g);
 	}
 
 	@Override
