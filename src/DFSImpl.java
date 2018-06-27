@@ -6,7 +6,7 @@ public class DFSImpl implements DFS{
 
 	int[][] dfs; 
 	int timestamp;
-	public List<Integer> topoSortList = new ArrayList();
+	public List<Integer> topoSortList;
 	Graph graph;
 	public boolean ruekwaertskanteGefunden = false;
 	
@@ -34,6 +34,7 @@ public class DFSImpl implements DFS{
 		if(dfs[i][0] != 2) {
 			dfs[i][3] = timestamp++;
 			dfs[i][0] = 2;
+			topoSortList = new ArrayList();
 			topoSortList.add(i);
 		}
 	}
