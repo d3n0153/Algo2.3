@@ -27,7 +27,6 @@ interface Graph {
     // Graphen die entgegengesetzte Kante (v, u) enthaelt.
     Graph transpose ();
     
-    void print();	// TODO: Muss vielleicht wieder raus oder nochmal nachdenken was man abgibt!
 }
 
 /*
