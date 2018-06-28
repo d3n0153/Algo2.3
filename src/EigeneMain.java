@@ -158,6 +158,16 @@ class EigeneMain {
 	     System.out.println("________DFS_TEST_ENDE_____");
 	     System.out.println("________MST_TEST__________");
 	     
+	     WeightedGraph muschi = new WeightedGraphImpl(new int [][] {
+	    	 {1,2},
+	    	 {0,2},
+	    	 {0,1}
+	     }, new double [][] {
+	    	 	{10,20},	
+	    	 	{50,10},
+	    	 	{20,33},
+	     });
+	     
 	     WeightedGraph penis = new WeightedGraphImpl(new int [] [] {
 	    		 {1,2},
 	    		 {3,4},	
@@ -175,8 +185,8 @@ class EigeneMain {
 	     });
 	     System.out.println(penis.succ(1, 0));
 	     MST mst = new MSTImpl();
-	     mst.compute(penis, 1);
-	     for (int i = 0; i < penis.size(); i++) {
+	     mst.compute(muschi, 1);
+	     for (int i = 0; i < muschi.size(); i++) {
 	    	 System.out.println(mst.pred(i));
 		}
 

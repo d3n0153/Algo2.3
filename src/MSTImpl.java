@@ -22,11 +22,15 @@ public class MSTImpl implements MST{
 		// 3 solange Warteschlange nicht leer ist
 		while(!heap.isEmpty()) {
 			
+			if(u != null) {
+				uAsInt = u.data().intValue();
+			}
+			
 			// 1 Für jeden Nachfolger von u:
-			for(int j = 0; j < g.deg(j); j++) {
+			for(int j = 0; j < g.deg(uAsInt); j++) {
 				
 				int v = g.succ(uAsInt, j);
-				double w = g.weight(uAsInt, v);
+				double w = g.weight(uAsInt, j);
 				// Wenn sich v in der Warteschlange befindet
 				// und das Gewicht w der Kante { u , v } kleiner als die 
 				// momentane Priorität von v ist:
@@ -42,7 +46,7 @@ public class MSTImpl implements MST{
 				
 				// 2 Entnehme einen Knoten u mit minimaler Priorität
 				u = heap.extractMin();
-				uAsInt = u.data().intValue();
+				
 				
 				// 3 Wenn Priorität von u == INF: Abbruch! Graph ist nicht zusammenhängend
 				if(u.prio() == Double.POSITIVE_INFINITY) {
