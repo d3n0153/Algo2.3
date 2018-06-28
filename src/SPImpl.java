@@ -1,23 +1,30 @@
 public class SPImpl implements SP{
-	int[][] tab;
+	// delta = Gewicht
+	double[] delta;
+	// pi = Vorgaenger
+	int[] pi;
 
 	// TODO Es wird davon ausgegangen, dass delta tab[][0] und phi tab [][1] ist
 	// Es passt aber nicht mit der Implementierung von WeightedGraph zusammen 
 	
+	// Tabelle Spalten = anzahl der Knoten; Zeile 0: delta; Zeile 1: pi
+	// tab[x][0] = Distanz zum Startknoten
+	// tab[x][1] = Vorg√§ngerKnoten
 	public boolean bellmanFord(WeightedGraph g, int s) {
-		tab = new int[g.size()][2];
-		for (int i = 0; i < tab.length; i++) {
-				tab[i][0] = -1;
-				tab[i][1] = -1;				
+		delta = new double[g.size()];
+		pi  = new int[g.size()];
+		for (int i = 0; i < g.size(); i++) {
+				delta[i] = INF;
+				pi[i] = NIL;				
 		}
-		tab[s][0] = 0;
+		delta[s] = 0;
 		// v ist Nachfolger Knoten
-		for (int i = 0; i < tab.length-1; i++) {
-			/** F¸r jede Kante (u, v ) aus E: Verwer te die Kante (vgl. ß 5.6.3).*/
-			int v = g.succ(i, 0);
-			double wv = g.weight(i, v);
+		for (int u = 0; u < g.size()-1; u++) {
+			/** F¸r jede Kante (u, v ) aus E: Verwerte die Kante (vgl. ß 5.6.3).*/
+			int v = g.succ(u, 0);
+			double wv = g.weight(u, v);
 			int dv = (int) ((SPImpl) g).dist(v);
-			if (tab[i][0] + wv < dv){
+			if (tab[u][0] + wv < dv){
 				
 			}
 		}
@@ -31,7 +38,6 @@ public class SPImpl implements SP{
 		return false;
 	}
 
-	@Override
 	public void dijkstra(WeightedGraph g, int s) {
 		// Keine negativen Kanten
 		// wird vom Algorithmus nicht ueberprueft
@@ -62,13 +68,11 @@ public class SPImpl implements SP{
 		}
 	}
 
-	@Override
 	public double dist(int v) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public int pred(int v) {
 		// TODO Auto-generated method stub
 		return 0;

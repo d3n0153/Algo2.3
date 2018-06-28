@@ -22,7 +22,7 @@ public class WeightedGraphImpl implements WeightedGraph{
 	public int deg(int v) {
 		return graph[v].length;	
 	}
-
+	// Nachfolger
 	public int succ(int v, int i) {
 		return graph[v][i];
 	}

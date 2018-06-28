@@ -1,8 +1,6 @@
-import BinHeap;
-
 public class MSTImpl implements MST{
 
-	BinHeap heap = new BinHeap();
+	BinHeap<Integer, Double> heap = new BinHeap<>();
 	
 	@Override
 	public boolean compute(WeightedGraph g, int s) {
@@ -23,11 +21,12 @@ public class MSTImpl implements MST{
 			// 1 Für jeden Nachfolger von u:
 			for(int j = 0; j < g.deg(u); j++) {
 				int v = g.succ(u, j);
+				BinHeap.Entry<Integer, Double> e = new BinHeap.Entry(v, v);
 				
 				// Wenn sich v in der Warteschlange befindet
 				// und das Gewicht w der Kante { u , v } kleiner als die 
 				// momentane Priorität von v ist:
-				if(heap.contains(v) && g.weight(v, j) < heap.minimum().prio()) {
+				if(heap.contains(e) && g.weight(v, j) < heap.minimum().prio()) {
 				}
 		}
 		
