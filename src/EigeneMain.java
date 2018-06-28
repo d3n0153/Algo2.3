@@ -157,7 +157,10 @@ class EigeneMain {
 	     System.out.println(ft3);
 	     System.out.println("________DFS_TEST_ENDE_____");
 	     
+	     System.out.println("________MST_TEST__________");
 
+	     
+	     
 	}
 
 }

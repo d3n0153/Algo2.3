@@ -5,16 +5,15 @@ public class MSTImpl implements MST{
 	BinHeap<Double, Integer> heap = new BinHeap<>();
 	int vorgaenger[];
 	
-	@Override
 	public boolean compute(WeightedGraph g, int s) {
 		
 		vorgaenger = new int[g.size()];
-		BinHeap.Entry<Double, Integer>[] = new BinHeap.Entry[g.size()];
+		BinHeap.Entry<Double, Integer>[] entrys = new BinHeap.Entry[g.size()];
 		
 		// 1 Fuege alle Knoten außer s mit Prio UNENDLICH in eine minVorrangWarteschlange ein
 		for(int i = 0; i < g.size(); i++) {
 			if(i != s) {
-				heap.insert(Double.POSITIVE_INFINITY, i);
+				entrys[i] = heap.insert(Double.POSITIVE_INFINITY, i);
 			}
 		}
 		
@@ -27,20 +26,11 @@ public class MSTImpl implements MST{
 			// 1 Für jeden Nachfolger von u:
 			for(int j = 0; j < g.deg(j); j++) {
 				int v = g.succ(u, j);
-				Integer vAsInteger = new Integer(v);
-				
-				double gewichtKanteUV = g.weight(j, v);
-				Double gewichtKanteUVAsDouble = new Double(gewichtKanteUV); 
-				
-				BinHeap.Entry<Double, Integer> vAsEntry; 
-				vAsEntry = new BinHeap.Entry(gewichtKanteUVAsDouble, vAsInteger);
-				vAsEntry.
-				// brauchen Entry vom Knoten
-				
+								
 				// Wenn sich v in der Warteschlange befindet
 				// und das Gewicht w der Kante { u , v } kleiner als die 
 				// momentane Priorität von v ist:
-				if(heap.contains(vAsEntry) && g.weight(v, j) < vAsEntry.prio().intValue()) {
+				if(heap.contains(entrys[v]) && g.weight(v, j) < entrys[v].prio().intValue()) {
 					
 					// setze Vorgänger pi(v) auf u und
 					vorgaenger[v] = u; // vllt meint der aber auch in der heap den Vorgänger
@@ -61,7 +51,6 @@ public class MSTImpl implements MST{
 		return true;
 	}
 
-	@Override
 	public int pred(int v) {
 		return vorgaenger[v];
 	}
