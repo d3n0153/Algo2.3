@@ -41,12 +41,10 @@ public class BFSImpl implements BFS{
 		}
 	}
 
-	@Override
 	public int dist(int v) {
 		return tab[v][0];
 	}
 
-	@Override
 	public int pred(int v) {
 		return tab[v][1];
 	}

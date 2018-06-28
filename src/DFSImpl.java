@@ -95,17 +95,14 @@ public class DFSImpl implements DFS{
 		}
 	}
 
-	@Override
 	public int det(int v) {
 		return dfs[v][2];
 	}
 
-	@Override
 	public int fin(int v) {
 		return dfs[v][3];
 	}
 
-	@Override
 	public int sort(int i) {
 		return topoSortList.get(i);
 	}
