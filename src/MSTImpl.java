@@ -9,6 +9,7 @@ public class MSTImpl implements MST{
 	public boolean compute(WeightedGraph g, int s) {
 		
 		vorgaenger = new int[g.size()];
+		BinHeap.Entry<Double, Integer>[] = new BinHeap.Entry[g.size()];
 		
 		// 1 Fuege alle Knoten außer s mit Prio UNENDLICH in eine minVorrangWarteschlange ein
 		for(int i = 0; i < g.size(); i++) {
@@ -26,10 +27,14 @@ public class MSTImpl implements MST{
 			// 1 Für jeden Nachfolger von u:
 			for(int j = 0; j < g.deg(j); j++) {
 				int v = g.succ(u, j);
+				Integer vAsInteger = new Integer(v);
 				
 				double gewichtKanteUV = g.weight(j, v);
+				Double gewichtKanteUVAsDouble = new Double(gewichtKanteUV); 
 				
-				BinHeap.Entry<Double, Integer> vAsEntry = new BinHeap.Entry<Double, Integer>(gewichtKanteUV, v);
+				BinHeap.Entry<Double, Integer> vAsEntry; 
+				vAsEntry = new BinHeap.Entry(gewichtKanteUVAsDouble, vAsInteger);
+				vAsEntry.
 				// brauchen Entry vom Knoten
 				
 				// Wenn sich v in der Warteschlange befindet

@@ -10,14 +10,19 @@ public class SPImpl implements SP{
 	// Tabelle Spalten = anzahl der Knoten; Zeile 0: delta; Zeile 1: pi
 	// tab[x][0] = Distanz zum Startknoten
 	// tab[x][1] = VorgängerKnoten
+	
 	public boolean bellmanFord(WeightedGraph g, int s) {
+		
 		delta = new double[g.size()];
 		pi  = new int[g.size()];
+		
 		for (int i = 0; i < g.size(); i++) {
 				delta[i] = INF;
 				pi[i] = NIL;				
 		}
+		
 		delta[s] = 0;
+		
 		// v ist Nachfolger Knoten
 		for (int u = 0; u < g.size()-1; u++) {
 			/** F�r jede Kante (u, v ) aus E: Verwerte die Kante (vgl. � 5.6.3).*/
@@ -25,7 +30,6 @@ public class SPImpl implements SP{
 			double wv = g.weight(u, v);
 			int dv = (int) ((SPImpl) g).dist(v);
 			if (tab[u][0] + wv < dv){
-				
 			}
 		}
 		/**
