@@ -1,5 +1,5 @@
 public class SPImpl implements SP{
-	// delta = Gewicht
+	// delta = gewichteteDistanz von s nach v
 	double[] delta;
 	// pi = Vorgaenger
 	int[] pi;
@@ -20,7 +20,7 @@ public class SPImpl implements SP{
 		delta[s] = 0;
 		// v ist Nachfolger Knoten
 		for (int u = 0; u < g.size()-1; u++) {
-			/** Für jede Kante (u, v ) aus E: Verwerte die Kante (vgl. § 5.6.3).*/
+			/** Fï¿½r jede Kante (u, v ) aus E: Verwerte die Kante (vgl. ï¿½ 5.6.3).*/
 			int v = g.succ(u, 0);
 			double wv = g.weight(u, v);
 			int dv = (int) ((SPImpl) g).dist(v);
@@ -29,10 +29,10 @@ public class SPImpl implements SP{
 			}
 		}
 		/**
-			Für jede Kante (u, v) aus E:
+			Fï¿½r jede Kante (u, v) aus E:
 			Wenn d(u) + r(u, v) < d(v):
 				Abbruch, weil der Graph einen von s aus 
-				erreichbaren negativen Zyklus enthält.
+				erreichbaren negativen Zyklus enthï¿½lt.
 		*/
 		
 		return false;
@@ -60,9 +60,9 @@ public class SPImpl implements SP{
 					i != null; i = heap.extractMin()){
 				int v = i.data();
 				/**
-				 	1 Verwerte die Kante (u, v ) (vgl. § 5.6.3).
+				 	1 Verwerte die Kante (u, v ) (vgl. ï¿½ 5.6.3).
 					2 Wenn d(v) dadurch erniedrigt wurde:
-						Erniedrige die Priorität von v entsprechend
+						Erniedrige die Prioritï¿½t von v entsprechend
 				 */
 			}
 		}
