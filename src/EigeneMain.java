@@ -156,6 +156,8 @@ class EigeneMain {
 	     int ft3 = dede.fin(0);
 	     System.out.println(ft3);
 	     System.out.println("________DFS_TEST_ENDE_____");
+	     System.out.println("________MST_TEST__________");
+	     
 	     WeightedGraph penis = new WeightedGraphImpl(new int [] [] {
 	    		 {1,2},
 	    		 {3,4},	
@@ -171,12 +173,12 @@ class EigeneMain {
 	    		 {1},
 	    		 {}
 	     });
+	     System.out.println(penis.succ(1, 0));
 	     MST mst = new MSTImpl();
 	     mst.compute(penis, 1);
 	     for (int i = 0; i < penis.size(); i++) {
 	    	 System.out.println(mst.pred(i));
 		}
-	     System.out.println("________MST_TEST__________");
 
 			
 		//Positiver Kreis
@@ -213,7 +215,7 @@ class EigeneMain {
 							{}
 		         });
 		
-		//Großstädte Europas
+		//Groï¿½stï¿½dte Europas
 		
 		new WeightedGraphImpl(new int [] [] {
 		                 {5,7,8}, //a 0
@@ -273,7 +275,7 @@ class EigeneMain {
 							{}
 		         });
 					
-		//Großstädte Europas
+		//Groï¿½stï¿½dte Europas
 		
 		new WeightedGraphImpl(new int [] [] {
 		                 {5,7,8}, //a 0

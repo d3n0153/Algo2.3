@@ -1,5 +1,3 @@
-import com.sun.jndi.ldap.EntryChangeResponseControl;
-
 public class MSTImpl implements MST{
 	
 	BinHeap<Double, Integer> heap = new BinHeap<>();
@@ -18,31 +16,36 @@ public class MSTImpl implements MST{
 		}
 		
 		// 2 setze u = s
-		int u = s;
+		BinHeap.Entry<Double, Integer> u = entrys[s];
+		int uAsInt = s;
 		
 		// 3 solange Warteschlange nicht leer ist
 		while(!heap.isEmpty()) {
 			
 			// 1 Für jeden Nachfolger von u:
 			for(int j = 0; j < g.deg(j); j++) {
-				int v = g.succ(u, j);
-								
+				
+				int v = g.succ(uAsInt, j);
+				double w = g.weight(uAsInt, v);
 				// Wenn sich v in der Warteschlange befindet
 				// und das Gewicht w der Kante { u , v } kleiner als die 
 				// momentane Priorität von v ist:
-				if(heap.contains(entrys[v]) && g.weight(v, j) < entrys[v].prio().intValue()) {
+				if(heap.contains(entrys[v]) && w < entrys[v].prio().intValue()) {
 					
 					// setze Vorgänger pi(v) auf u und
-					vorgaenger[v] = u; // vllt meint der aber auch in der heap den Vorgänger
+					vorgaenger[v] = uAsInt; // vllt meint der aber auch in der heap den Vorgänger
+					
 					// erniedrige das die Prio von v auf g.weigth(j, v)
+					heap.changePrio(entrys[v], new Double(w));
 					// vAsEntry.changePrio(g.weigth(j, v) als Integer)
 				}
 				
 				// 2 Entnehme einen Knoten u mit minimaler Priorität
-				BinHeap.Entry<Double, Integer> e = heap.extractMin();
+				u = heap.extractMin();
+				uAsInt = u.data().intValue();
 				
-				// 3 Wenn Priorität von e == INF: Abbruch! Graph ist nicht zusammenhängend
-				if(e.prio().intValue() == Double.POSITIVE_INFINITY) {
+				// 3 Wenn Priorität von u == INF: Abbruch! Graph ist nicht zusammenhängend
+				if(u.prio() == Double.POSITIVE_INFINITY) {
 					return false;					
 				}
 			}

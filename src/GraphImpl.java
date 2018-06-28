@@ -20,9 +20,8 @@ public class GraphImpl implements Graph{
 
 	// Es soll die Anzahl der ausgehenden Kanten eines Knotens ausgegeben werden
 	// gibt für Eingabe v = 0...(n-1)
-	// Wenn nur Zahlen von 1 - n eingegeben werden können, muss im Knotenaufruf graph[v -1] stehen.
 	public int deg(int v) {
-		return graph[v].length;	// TODO: abklären
+		return graph[v].length;	
 	} // fertig
 	
 	// Gibt den i-ten direkten Nachfolger des Knotens v aus
