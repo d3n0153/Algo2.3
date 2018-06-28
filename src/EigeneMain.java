@@ -156,9 +156,148 @@ class EigeneMain {
 	     int ft3 = dede.fin(0);
 	     System.out.println(ft3);
 	     System.out.println("________DFS_TEST_ENDE_____");
-	     
+	     WeightedGraph penis = new WeightedGraphImpl(new int [] [] {
+	    		 {1,2},
+	    		 {3,4},	
+	    		 {3,4},
+	    		 {4,5},
+	    		 {5},
+	    		 {}
+	     }, new double [] [] {
+	    		 {10,20},	
+	    		 {50,10},
+	    		 {20,33},
+	    		 {-20,-2},
+	    		 {1},
+	    		 {}
+	     });
+	     MST mst = new MSTImpl();
+	     mst.compute(penis, 1);
+	     for (int i = 0; i < penis.size(); i++) {
+	    	 System.out.println(mst.pred(i));
+		}
 	     System.out.println("________MST_TEST__________");
 
+			
+		//Positiver Kreis
+		new WeightedGraphImpl(new int [] [] {
+		                 {1}, //a
+		                 {2}, //b	
+		                 {4}, //c
+		                 {1}, //d
+		                 {3,5},//e
+							{} //f
+		         }, new double [] [] {
+		                 {10},	
+		                 {10},
+		                 {7},
+		                 {5},
+		                 {5,15},
+							{}
+		         });
+		
+		//Negativer Kreis
+		new WeightedGraphImpl(new int [] [] {
+		                 {1}, //a
+		                 {2}, //b	
+		                 {4}, //c
+		                 {1}, //d
+		                 {3,5},//e
+							{} //f
+		         }, new double [] [] {
+		                 {10},	
+		                 {1},
+		                 {3},
+		                 {4},
+		                 {-10,22},
+							{}
+		         });
+		
+		//Großstädte Europas
+		
+		new WeightedGraphImpl(new int [] [] {
+		                 {5,7,8}, //a 0
+		                 {5,6,7,9}, //b	1
+		                 {4,5}, //c 2
+		                 {6,9}, //d 3
+		                 {2,5,9},//e  4
+							{0,1,2,4}, //f 5
+							{1,3,7}, //g 6
+		                 {0,1,6}, //h 7 
+		                 {0}, //i 8
+							{1,3,4} //j 9
+		         }, new double [] [] {
+		                 {343,1435,464},	
+		                 {879,954,811,524},
+		                 {1364,1054},
+		                 {433,1053},
+		                 {1364,1106,766},
+							{343,879,1054,1106},
+							{954,433,837},
+		                 {1435,811,837},
+		                 {464},
+							{524,1053,766}
+		         });
+		https://www-m9.ma.tum.de/graph-algorithms/spp-dijkstra/index_de.html
+		//Standartbeispiel
+		new WeightedGraphImpl(new int [] [] {
+		                 {1,2},
+		                 {3,4},	
+		                 {3,4},
+		                 {4,5},
+		                 {5},
+							{}
+		         }, new double [] [] {
+		                 {10,20},	
+		                 {50,10},
+		                 {20,33},
+		                 {20,2},
+		                 {1},
+							{}
+		         });
+					
+		//Kreis
+		new WeightedGraphImpl(new int [] [] {
+		                 {1}, //a
+		                 {2}, //b	
+		                 {4}, //c
+		                 {1}, //d
+		                 {3,5},//e
+							{} //f
+		         }, new double [] [] {
+		                 {10},	
+		                 {1},
+		                 {3},
+		                 {4},
+		                 {10,22},
+							{}
+		         });
+					
+		//Großstädte Europas
+		
+		new WeightedGraphImpl(new int [] [] {
+		                 {5,7,8}, //a 0
+		                 {5,6,7,9}, //b	1
+		                 {4,5}, //c 2
+		                 {6,9}, //d 3
+		                 {2,5,9},//e  4
+							{0,1,2,4}, //f 5
+							{1,3,7}, //g 6
+		                 {0,1,6}, //h 7 
+		                 {0}, //i 8
+							{1,3,4} //j 9
+		         }, new double [] [] {
+		                 {343,1435,464},	
+		                 {879,954,811,524},
+		                 {1364,1054},
+		                 {433,1053},
+		                 {1364,1106,766},
+							{343,879,1054,1106},
+							{954,433,837},
+		                 {1435,811,837},
+		                 {464},
+							{524,1053,766}
+		         });
 	     
 	     
 	}
