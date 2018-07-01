@@ -139,8 +139,8 @@ class EigeneMain {
 	     
 	     DFS dede = new DFSImpl();
 	     
-	     dede.search(heiloAzykl);
-	     dede.sort(heiloAzykl);
+	     dede.search(heilo);
+	     dede.sort(heilo);
 	     
 	     int dt2 = dede.det(0);
 	     System.out.println(dt2);
@@ -148,7 +148,7 @@ class EigeneMain {
 	     int ft2 = dede.fin(0);
 	     System.out.println(ft2);
 	     
-	     dede.search(heiloAzykl, dede);
+	     dede.search(heilo, dede);
 	     
 	     int dt3 = dede.det(0);
 	     System.out.println(dt3);
@@ -293,11 +293,11 @@ class EigeneMain {
 		                 {4,5}, //c 2
 		                 {6,9}, //d 3
 		                 {2,5,9},//e  4
-							{0,1,2,4}, //f 5
-							{1,3,7}, //g 6
+		                 {0,1,2,4}, //f 5
+		                 {1,3,7}, //g 6
 		                 {0,1,6}, //h 7 
 		                 {0}, //i 8
-							{1,3,4} //j 9
+		                 {1,3,4} //j 9
 		         }, new double [] [] {
 		                 {343,1435,464},	
 		                 {879,954,811,524},
