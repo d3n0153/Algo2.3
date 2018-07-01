@@ -10,7 +10,7 @@ public class BFSImpl implements BFS{
 	
 	public void search(Graph g, int s) {
 		
-		// Tabelle Spalten = anzahl der Knoten; Zeile 0: delta; Zeile 1: pi
+		// Tabelle Spalten = Anzahl der Knoten; Zeile 0: delta; Zeile 1: pi
 		// tab[x][0] = Distanz zum Startknoten
 		// tab[x][1] = VorgängerKnoten
 		tab = new int[g.size()][2];
